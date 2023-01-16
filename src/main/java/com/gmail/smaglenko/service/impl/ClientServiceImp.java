@@ -16,7 +16,7 @@ public class ClientServiceImp implements ClientService {
         clientConnection(address, port);
         try {
             user = new User();
-            System.out.format("Helli, enter user name.%n");
+            System.out.format("Hello, enter user name.%n");
             changeUseName(user, input.readLine());
         } catch (Exception e) {
             throw new RuntimeException(e);

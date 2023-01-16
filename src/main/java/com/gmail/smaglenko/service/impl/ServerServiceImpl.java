@@ -26,10 +26,10 @@ public class ServerServiceImpl implements ServerService {
     public void startServer(int port) {
         try {
             server = new ServerSocket(port);
-            System.out.format("Server started port: %s.", port);
-            System.out.format("Waiting for a client ...");
+            System.out.format("Server started port: %s.%n", port);
+            System.out.format("Waiting for a client ...%n");
             socket = server.accept();
-            System.out.format("Client accepted");
+            System.out.format("Client accepted%n");
             // takes input from the client socket
             in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
         } catch (Exception e) {
@@ -42,7 +42,7 @@ public class ServerServiceImpl implements ServerService {
         while (!line.contains("Bye")) {
             try {
                 line = in.readUTF();
-                System.out.format(line);
+                System.out.format("%s%n", line);
             } catch (Exception e) {
                 throw new RuntimeException("Can't read message.", e);
             }
@@ -52,10 +52,10 @@ public class ServerServiceImpl implements ServerService {
     @Override
     public void closeConnection() {
         try {
-            System.out.format("Closing connection...");
+            System.out.format("Closing connection...%n");
             socket.close();
             in.close();
-            System.out.format("Connection closed.");
+            System.out.format("Connection closed.%n");
         } catch (Exception e) {
             throw new RuntimeException("Can't close connection.", e);
         }
